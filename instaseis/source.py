@@ -555,10 +555,10 @@ class Source(SourceOrReceiver, SourceTimeFunction):
         # assert M0 >= 0
 
         if rake > 360:
-            rake -=360
+            rake -= 360
         if rake < 0:
-            rake +=360
-            
+            rake += 360
+
         if M0 < 0:
             rake = rake - 180
             if rake < 0:
