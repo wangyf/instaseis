@@ -553,6 +553,12 @@ class Source(SourceOrReceiver, SourceTimeFunction):
             Mtp              :   1.29e+16 Nm
         """
         # assert M0 >= 0
+
+        if rake > 360:
+            rake -=360
+        if rake < 0:
+            rake +=360
+            
         if M0 < 0:
             rake = rake - 180
             if rake < 0:
