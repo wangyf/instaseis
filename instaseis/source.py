@@ -552,7 +552,13 @@ class Source(SourceOrReceiver, SourceTimeFunction):
             Mrp              :   8.47e+16 Nm
             Mtp              :   1.29e+16 Nm
         """
-        assert M0 >= 0
+        # assert M0 >= 0
+        if M0 < 0:
+            rake = rake - 180
+            if rake < 0:
+                rake = rake + 360
+            M0 = -M0
+
         if dt is not None:
             assert dt > 0
 
@@ -1204,7 +1210,7 @@ class FiniteSource(object):
                             dep,
                             stk,
                             dip,
-                            rake,
+                            rake+90,
                             m0,
                             time_shift=tinit,
                             sliprate=stf,
